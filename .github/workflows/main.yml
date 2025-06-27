@@ -21,8 +21,9 @@ jobs:
       with:
         arch: arm64
         compiler: gcc/12
-        defconfig: defconfig
+        defconfig: atoll_defconfig
         image: Image.gz-dtb
+        modules: true
 
     - name: Upload Kernel and Module
       uses: actions/upload-artifact@v4
@@ -30,4 +31,4 @@ jobs:
         name: module
         path: |
           ${{ steps.build.outputs.outfile }}
-          ./out/drivers/memkernel/memkernel.ko
+          ./out/drivers/memkernel/rascal_memk.ko
